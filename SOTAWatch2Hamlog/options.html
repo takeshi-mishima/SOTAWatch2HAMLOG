@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <style>
+    body { width: 220px; padding: 10px; font-family: sans-serif; font-size: 14px; }
+    .field { margin-bottom: 12px; }
+    label { display: block; margin-bottom: 4px; font-weight: bold; }
+    select, input { width: 100%; padding: 4px; box-sizing: border-box; }
+    button { width: 100%; padding: 8px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+  </style>
+</head>
+<body>
+  <div class="field">
+    <label>転送先ウインドウ</label>
+    <select id="targetLog">
+      <option value="A">LOG-[A]</option>
+      <option value="B">LOG-[B]</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>転送先フィールド</label>
+    <select id="targetRemarks">
+      <option value="Remarks1">Remarks1</option>
+      <option value="Remarks2">Remarks2</option>
+    </select>
+  </div>
+  <div class="field">
+    <label>サミット書式</label>
+    <input type="text" id="summitFormat" value="{summit_id} {summit_name}">
+  </div>
+  <div class="field">
+    <label>時刻表示</label>
+    <select id="timeMode">
+      <option value="JST">JST (UTC+9)</option>
+      <option value="UTC">UTC (そのまま)</option>
+    </select>
+  </div>
+  <button id="save">設定を保存</button>
+  <script src="options.js"></script>
+</body>
+</html>
