@@ -1,0 +1,5 @@
+backup/
+tools/
+*.zip
+SOTAWatch2Hamlog/geojson/*
+!SOTAWatch2Hamlog/geojson/.gitkeep
