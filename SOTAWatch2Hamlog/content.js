@@ -91,6 +91,66 @@ function injectButton() {
     const hisSet = createRstBox('His', 'hamlog-his');
     const mySet = createRstBox('My', 'hamlog-my');
 
+	// 時刻更新ボタンを追加
+	const dateInput = modal.querySelector('input#date');
+	const timeInput = modal.querySelector('input#time');
+
+	if (dateInput && timeInput && !document.getElementById('update-time-btn')) {
+	    const timeUpdateBtn = document.createElement('button');
+	    timeUpdateBtn.id = 'update-time-btn';
+	    timeUpdateBtn.type = 'button';
+
+	    // 更新ボタンアイコン (SVG)
+	    timeUpdateBtn.innerHTML = `
+	        <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" viewBox="0 0 16 16">
+	          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2v1z"/>
+	          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466z"/>
+	        </svg>
+	    `;
+	    
+		timeUpdateBtn.style.cssText = `
+	        margin-left: 8px;
+	        padding: 4px;
+	        display: flex;
+	        align-items: center;
+	        justify-content: center;
+	        background-color: #f8f9fa;
+	        color: #666;
+	        border: 1px solid #ccc;
+	        border-radius: 4px;
+	        cursor: pointer;
+	        transition: background-color 0.2s;
+	    `;
+	    
+	    // ホバー時の効果
+	    timeUpdateBtn.onmouseover = () => { timeUpdateBtn.style.backgroundColor = '#e2e6ea'; };
+	    timeUpdateBtn.onmouseout = () => { timeUpdateBtn.style.backgroundColor = '#f8f9fa'; };
+
+	    timeUpdateBtn.onclick = (e) => {
+	        e.preventDefault();
+	        const now = new Date(); // ブラウザ実行時の現在時刻
+            const YY = now.getUTCFullYear();
+            const MM = (now.getUTCMonth() + 1).toString().padStart(2, '0');
+            const DD = now.getUTCDate().toString().padStart(2, '0');
+			const hh = now.getUTCHours().toString().padStart(2, '0');   // 時(UTC)
+			const mm = now.getUTCMinutes().toString().padStart(2, '0'); // 分(UTC)
+
+	        // 日付 (UTC) の更新: DD/MM/YYYY
+            dateInput.value = `${DD}/${MM}/${YY}`;
+            dateInput.dispatchEvent(new Event('input', { bubbles: true }));
+
+	        // 時刻 (UTC) の更新: HH:MM
+			timeInput.value = `${hh}:${mm}`;
+	        timeInput.dispatchEvent(new Event('input', { bubbles: true }));
+	    };
+
+	    // TIME入力欄の親要素を調整してボタンを配置
+	    const timeContainer = timeInput.parentNode;
+	    timeContainer.style.display = 'flex';
+	    timeContainer.style.alignItems = 'center';
+	    timeContainer.appendChild(timeUpdateBtn);
+	}
+
     // HAMLOG転送ボタンの作成
     const btn = document.createElement('button');
     btn.id = 'hamlog-btn';
