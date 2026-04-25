@@ -1,8 +1,8 @@
 {
   "manifest_version": 3,
-  "name": "SOTA Watch to HAMLOG",
-  "version": "1.7",
-  "description": "SOTA Watch3のLog ChaseウインドウからTurbo HAMLOGの入力ウインドウに情報を転送するためのツールです",
+  "name": "SOTAWatch to HAMLOG",
+  "version": "1.8",
+  "description": "SOTAwatch3のLog ChaseウインドウからTurbo HAMLOGの入力ウインドウに情報を転送するためのツールです",
   "author": "© 2026 Takeshi Mishima JK1VUZ",
   "permissions": ["storage"],
   "action": {
