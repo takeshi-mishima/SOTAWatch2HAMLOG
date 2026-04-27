@@ -326,7 +326,7 @@ function checkBridgeStatus(button) {
                     button.innerText = 'HAMLOG転送';
                     button.style.backgroundColor = '#0d6efd'; // 青色
                     button.style.cursor = 'pointer';
-                    showToast("ブリッジと接続しました", "success");
+                    // showToast("ブリッジと接続しました", "success");
                 }
             })
             .catch(() => {
