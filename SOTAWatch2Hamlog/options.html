@@ -3,11 +3,15 @@
 <head>
   <meta charset="UTF-8">
   <style>
-    body { width: 220px; padding: 10px; font-family: sans-serif; font-size: 14px; }
-    .field { margin-bottom: 12px; }
+    body { width: 260px; padding: 10px; font-family: sans-serif; font-size: 14px; }
+    .field { margin-bottom: 10px; }
     label { display: block; margin-bottom: 4px; font-weight: bold; }
-    select, input { width: 100%; padding: 4px; box-sizing: border-box; }
-    button { width: 100%; padding: 8px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; }
+    select, input[type="text"] { width: 100%; padding: 4px; box-sizing: border-box; }
+    .overwrite-row { display: flex; align-items: center; margin-top: 4px; gap: 6px; font-size: 13px; color: #444; }
+    .overwrite-row input[type="checkbox"] { width: auto; margin: 0; }
+    .section-title { font-weight: bold; font-size: 13px; color: #555; border-bottom: 1px solid #ddd; padding-bottom: 3px; margin-bottom: 8px; margin-top: 4px; }
+    button { width: 100%; padding: 8px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 4px; }
+    .hint { font-size: 11px; color: #888; margin-top: 3px; }
   </style>
 </head>
 <body>
@@ -18,17 +22,25 @@
       <option value="B">LOG-[B]</option>
     </select>
   </div>
+
   <div class="field">
-    <label>転送先フィールド</label>
-    <select id="targetRemarks">
-      <option value="Remarks1">Remarks1</option>
-      <option value="Remarks2">Remarks2</option>
-    </select>
+    <label>Remarks1</label>
+    <input type="text" id="remarks1Format" value="">
+    <div class="overwrite-row">
+      <input type="checkbox" id="remarks1Overwrite">
+      <label for="remarks1Overwrite" style="font-weight:normal; margin:0;">上書き</label>
+    </div>
   </div>
+
   <div class="field">
-    <label>サミット書式</label>
-    <input type="text" id="summitFormat" value="{summit_id} {summit_name}">
+    <label>Remarks2</label>
+    <input type="text" id="remarks2Format" value="">
+    <div class="overwrite-row">
+      <input type="checkbox" id="remarks2Overwrite">
+      <label for="remarks2Overwrite" style="font-weight:normal; margin:0;">上書き</label>
+    </div>
   </div>
+
   <div class="field">
     <label>時刻表示</label>
     <select id="timeMode">
