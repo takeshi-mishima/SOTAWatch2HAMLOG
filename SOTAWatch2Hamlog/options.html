@@ -11,7 +11,23 @@
     .overwrite-row input[type="checkbox"] { width: auto; margin: 0; }
     .section-title { font-weight: bold; font-size: 13px; color: #555; border-bottom: 1px solid #ddd; padding-bottom: 3px; margin-bottom: 8px; margin-top: 4px; }
     button { width: 100%; padding: 8px; background: #4CAF50; color: white; border: none; border-radius: 4px; cursor: pointer; margin-top: 4px; }
-    .hint { font-size: 11px; color: #888; margin-top: 3px; }
+    .label-row { display: flex; align-items: center; gap: 5px; margin-bottom: 4px; }
+    .label-row label { margin-bottom: 0; }
+    .hint-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background: #bbb;
+      color: #fff;
+      font-size: 10px;
+      font-weight: bold;
+      font-style: normal;
+      cursor: help;
+      flex-shrink: 0;
+    }
   </style>
 </head>
 <body>
@@ -47,6 +63,14 @@
       <option value="JST">JST (UTC+9)</option>
       <option value="UTC">UTC (そのまま)</option>
     </select>
+  </div>
+
+  <div class="field">
+    <div class="label-row">
+      <label for="timeDeviationThreshold">時刻ずれ確認のしきい値（分）</label>
+      <span class="hint-icon" title="Log Chaseの日時が現在時刻からこの分数以上ずれている場合、転送前に確認ダイアログを表示します。0にすると確認しません。">?</span>
+    </div>
+    <input type="text" id="timeDeviationThreshold" value="3" inputmode="numeric">
   </div>
   <button id="save">設定を保存</button>
   <script src="options.js"></script>

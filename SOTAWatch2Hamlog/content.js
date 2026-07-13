@@ -208,6 +208,7 @@ function injectButton() {
 		chrome.storage.local.get({
 			timeMode:         'JST',
 			targetLog:        'A',
+			timeDeviationThreshold: 3,
 			remarks1Format:   '',
 			remarks1Overwrite: false,
 			remarks2Format:   '',
@@ -244,6 +245,19 @@ function injectButton() {
 				parseInt(t[0]), 
 				parseInt(t[1])
 			));
+
+			// 現在時刻とのずれをチェック（Log Chaseの日時はUTC基準）
+			const threshold = parseInt(settings.timeDeviationThreshold, 10) || 0;
+			if (threshold > 0) {
+				const diffMinutes = Math.abs(Date.now() - dateObj.getTime()) / 60000;
+				if (diffMinutes > threshold) {
+					const diffRounded = Math.round(diffMinutes);
+					const proceed = confirm(
+						`Log Chaseの日時が現在時刻から約${diffRounded}分ずれています（しきい値: ${threshold}分）。\nこのままHAMLOGへ転送しますか？`
+					);
+					if (!proceed) return;
+				}
+			}
 			
 			let finalDate, finalTime;
 			if (settings.timeMode === 'JST') {
