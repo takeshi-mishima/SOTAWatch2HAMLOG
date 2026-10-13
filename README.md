@@ -21,7 +21,7 @@ SOTAwatch3 の Log Chase ウインドウのデータを、Turbo HAMLOG の入力
 
 ## インストール
 
-[Releases](../../releases) から最新の `sotawatch2hamlog.zip` をダウンロードし、任意のフォルダに展開します。
+[Releases](../../releases) から最新の zip（`sotawatch2hamlog_V*.zip`）をダウンロードし、任意のフォルダに展開します。
 導入手順（スタートアップ登録、拡張機能の読み込み、初期設定）は同梱の
 [readme.txt](SOTAWatch2Hamlog/readme.txt) を参照してください。
 
